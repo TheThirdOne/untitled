@@ -9,7 +9,8 @@ function StartWork(){
       thought("What can I say?");
       Choose({
     		"As I left my house, a car splashed water on me. So I needed to ...": BossAngry,
-    		"I was mugged on the bus.": BossAngry
+    		"Bus was full": BossAngry,
+    		"When I woke up I was a bug": BossAngry //maybe change this
     	});
     }else{
       Choose({
@@ -51,27 +52,27 @@ function DoWork(){
   		"Jake Brown": DoWork2
   	};
   Choose($.temp.cases);
-  console.log('log');
   if($.loop == 2){
     thought("These are the same as from yesterday!");
   }
 }
 function DoWork2(m){
-  console.log('log2');
   player("I'll do " + m);
-  //minigame stuff maybe
+  Choose({"Approved":DoWork3,
+          "Denied":DoWork3});
   $.temp.cases[m] = false;
-  var done = 0;
+}
+function DoWork3(m){
+  player(m);
+  var tmp = {};
   for(var name in $.temp.cases){ //for each case
     if($.temp.cases[name]){     //add it to the choices if not done
-      var tmp = {};
       tmp[name] = $.temp.cases[name];
-      Choose(tmp);
-    }else{                       //otherwise add it to the done
-      done++;
     }
   }
-  if(done ===  Object.keys($.temp.cases).length){
+  if(Object.keys(tmp).length){
+    Choose(tmp);
+  }else{
     player("All done");
     player("Guess I'll go home now");
     //boss conflict
