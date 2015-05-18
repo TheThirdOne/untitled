@@ -6,7 +6,7 @@ Background("menu","img/backgrounds/menu.png");
 //////////        Wakeup            /////////////
 Background("alarm","img/backgrounds/alarm.png");
 Background("room","img/backgrounds/room.png");
-Background("outside","img/backgrounds/outside.png");
+Background("building","img/backgrounds/building.png");
 
 //////////         Work            /////////////
 Background("work","img/backgrounds/work.png");

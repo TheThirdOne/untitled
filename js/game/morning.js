@@ -40,7 +40,7 @@ function MorningRoutine(a){
 	}
 }
 function LeaveHome(){
-  Show("background","outside");
+  Show("background","building");
 	narrator("You walk out the front door");
   if($.loop <= 2){
   	narrator("*SPLASH*");
