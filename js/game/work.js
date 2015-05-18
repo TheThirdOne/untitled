@@ -39,7 +39,7 @@ function InCubicle(){
     DoWork();
   }else{
     //talk to other people
-    thoughts("I love no consequences");
+    thought("I love no consequences");
     EndWork();
   }
 }
@@ -82,5 +82,5 @@ function DoWork3(m){
 }
 function EndWork(){
   Clear();
-	Wakeup();
+	Home();
 }
