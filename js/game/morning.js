@@ -43,6 +43,7 @@ function LeaveHome(){
   Show("background","building");
 	narrator("You walk out the front door");
   if($.loop <= 2){
+    PlaySound("splash","splash",{loop:0, volume:.7});
   	narrator("*SPLASH*");
   	narrator("A car driving by hit a puddle and drenched you in disgusting water");
   	$.temp.drenched  = true;

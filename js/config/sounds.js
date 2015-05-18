@@ -6,3 +6,7 @@ Sound("text_high","sounds/sfx/text_high.ogg");
 
 ////////// Wakeup /////////////
 Sound("alarm","sounds/sfx/loud_alarm_clock_sound.wav");
+
+
+/////////  Outside ////////////
+Sound("splash","sounds/sfx/car_splash.mp3");
