@@ -1,5 +1,5 @@
 function StartWork(){
-  Show("background","alarm"); //work art
+  Show("background","work"); //work art
   if($.temp.drenched){
     narrator("You arrive at work late on account of your accident earlier.");
     narrator("You try to get to your cubicle quickly to make up the lost time.");
@@ -25,7 +25,7 @@ function StartWork(){
 }
 //pandybat scene
 function BossAngry(m){
-  //boss appears
+  //boss appears (maybe)
   player(m);
   boss("You think I can't tell a lie when I hear one");
   boss("Get to your cubicle.");
@@ -34,7 +34,7 @@ function BossAngry(m){
 }
 function InCubicle(){
   Clear();
-  //set art to cubicle.
+  Show("background","desk");
   if($.loop <= 2){
     DoWork();
   }else{

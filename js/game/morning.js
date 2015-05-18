@@ -1,6 +1,6 @@
 function Start(){
 	$ = {};
-
+  Show("background","menu");
 	narrator("<b>[Untitled]</b>");
 	narrator("A game about life.");
 	narrator("Are you ready to begin?");
@@ -21,11 +21,14 @@ function Wakeup(){
   PlaySound("alarm","alarm",{loop:0, volume:0.7});
   narrator("*Alarm Sounds*");
   Choose({
-		"*Wake up*": function(m){player(m);PlaySound("alarm","alarm",{loop:0, volume:0});Clear();narrator("You get out of bed");MorningRoutine();}
+		"*Wake up*": function(m){player(m);PlaySound("alarm","alarm",{loop:0, volume:0});Clear();MorningRoutine(true);}
 	});
 }
-function MorningRoutine(){
-  //set room art
+function MorningRoutine(a){
+  Show("background","room");
+  if(a){
+    narrator("You get out of bed");
+  }
 	if($.temp.dressed){
 	  Choose({
 		  "*leave*": function(m){player(m);Clear();LeaveHome();}
@@ -37,6 +40,7 @@ function MorningRoutine(){
 	}
 }
 function LeaveHome(){
+  Show("background","outside");
 	narrator("You walk out the front door");
   if($.loop <= 2){
   	narrator("*SPLASH*");
