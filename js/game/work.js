@@ -1,5 +1,6 @@
 function StartWork(){
   Show("background","work"); //work art
+  PlaySound("office","office",{loop:-1,volume:.5});
   if($.temp.drenched){
     narrator("You arrive at work late on account of your accident earlier.");
     narrator("You try to get to your cubicle quickly to make up the lost time.");
@@ -33,7 +34,7 @@ function BossAngry(m){
   InCubicle();
 }
 function InCubicle(){
-  Clear();
+  ClearDialogue();
   Show("background","desk");
   if($.loop <= 2){
     DoWork();

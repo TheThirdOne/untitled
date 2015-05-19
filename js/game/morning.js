@@ -19,9 +19,10 @@ function Wakeup(){
   }
   Show("background","alarm");
   PlaySound("alarm","alarm",{loop:0, volume:0.7});
+  PlaySound("room","room",{loop:-1});
   narrator("*Alarm Sounds*");
   Choose({
-		"*Wake up*": function(m){player(m);PlaySound("alarm","alarm",{loop:0, volume:0});Clear();MorningRoutine(true);}
+		"*Wake up*": function(m){player(m);PlaySound("alarm","alarm",{loop:0, volume:0});ClearDialogue();MorningRoutine(true);}
 	});
 }
 function MorningRoutine(a){
@@ -41,6 +42,7 @@ function MorningRoutine(a){
 }
 function LeaveHome(){
   Show("background","building");
+  PlaySound("city","city",{loop:-1});
 	narrator("You walk out the front door");
   if($.loop <= 2){
     PlaySound("splash","splash",{loop:0, volume:.7});

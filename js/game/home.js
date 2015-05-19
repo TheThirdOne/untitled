@@ -1,5 +1,6 @@
 function Home(){
   Show("background","home");
+  PlaySound("room","room",{loop:-1});
   player("I'm home. Sorry I'm late");
   relative("Great, I'm was just getting hungry");
   relative("Get a pizza for me.");
