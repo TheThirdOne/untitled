@@ -2,9 +2,9 @@ function Home(){
   Show("background","home");
   PlaySound("room","room",{loop:-1});
   player("I'm home. Sorry I'm late");
-  relative("Great, I'm was just getting hungry");
-  relative("Get a pizza for me.");
-  relative("Supreme");
+  dad("Great, I'm was just getting hungry");
+  dad("Get a pizza for me.");
+  dad("Supreme");
   if($.loop === 2){
     thought("Of course he wants the same thing");
   }
@@ -28,8 +28,8 @@ function Home2(){
   }
 }
 function Home3(){
-  relative("Of course I mind!");
-  relative("Go make yourself something.");
+  dad("Of course I mind!");
+  dad("Go make yourself something.");
   Choose({
     "Ok":function(m){player(m);player("*Makes a sandwhich*");Home4();}
   });
@@ -42,14 +42,14 @@ function Home4(){
   if($.temp.denied){
     narrator("TV: " + $.temp.denied + " does something");
   }*/
-  narrator("TV: something"); //todo: make news
+  narrator("TV: Flock of Geese gets caught in the engi of Flight B732");
   if($.loop == 2){
     thought("No way this would happen two days in a row!");
     player("Didn't this happen yesterday?");
-    relative("You need to have your head checked out.");
-    relative("Go to sleep; that should help sort you out");
+    dad("You need to have your head checked out.");
+    dad("Go to sleep; that should help sort you out");
   }else{
-    relative("You should get to bed; you need to get up early tommorrow.");
+    dad("You should get to bed; you need to get up early tommorrow.");
   }
   Choose({
     "Ok":function(m){player(m);EndHome();}
@@ -60,4 +60,60 @@ function EndHome(){
   player("*goes to sleep*");
   Clear();
   Wakeup();
+}
+
+function StayHome(){
+  Show("background","home");
+  PlaySound("room","room",{loop:-1});
+  dad("*Opens Door*");
+  dad("<b>WHAT ARE YOU DOING AT HOME?!</b>");
+  dad("<b>YOU SHOULD BE AT WORK</b>");
+  if(!$.temp.dressed){
+    dad("<b>WHY ARE YOU NOT DRESSED?!</b>");
+  }
+	Choose({
+	  "I'm living my own life now":Indepence,
+	  "Explain":Explain
+	});
+}
+
+function Indepence(m){
+  player(m);
+  player("I am going to live how I want.");
+  player("*Slams Door*");
+  Clear();
+  LeaveHome();
+}
+function Explain(){
+  player("It doesn't matter what I do anyway.");
+  player("Anything I do will have no effect.");
+  player("Whenever I wake up, its the same day.");
+  dad("Wow. You need to see a psychologist.");
+  dad("<small>I might have to go to work</small>");
+  Choose({
+	  "No, its the truth!":Truth,
+	  "*Throw yourself out of the window*":Leap,
+	  "*Leave*":Leave
+	});
+}
+function Leap(m){
+  player(m);
+  Show("background","building");
+  narrator("You feel a rush as you approach the concrete below");
+  narrator("<b>*SMACK*</b>");
+  Clear();
+  Wakeup();
+}
+function Truth(m){
+  player(m);
+  dad("You're crazy");
+  Choose({
+	  "*Throw yourself out of the window*":Leap,
+	  "*Leave*":Leave
+	});
+}
+function Leave(m){
+  player(m);
+  Clear();
+  LeaveHome();
 }

@@ -11,4 +11,4 @@ narrator = new Character({ align:"left", background:"#79B8FE", sound:"text_mid" 
 boss = new Character({ align:"left", background:"#F44", sound:"text_low" });
 
 //like Gregor's relatives
-relative = new Character({ align:"left", background:"#44F", sound:"text_low" });
+dad = new Character({ align:"left", background:"#44F", sound:"text_low" });

@@ -2,7 +2,7 @@ function Start(){
 	$ = {};
   Show("background","menu");
 	narrator("<b>[Untitled]</b>");
-	narrator("A game about life.");
+	narrator("I'm the narrator");
 	narrator("Are you ready to begin?");
 	Choose({
 		"Yes": function(m){player(m);Clear();Wakeup()},
@@ -30,15 +30,16 @@ function MorningRoutine(a){
   if(a){
     narrator("You get out of bed");
   }
+  var tmp = {};
 	if($.temp.dressed){
-	  Choose({
-		  "*leave*": function(m){player(m);Clear();LeaveHome();}
-	  });
+		  tmp["*leave*"]=function(m){player(m);Clear();LeaveHome();};
 	}else{
-	  Choose({
-		  "*Get Dressed*": function(m){player(m);$.temp.dressed = true;MorningRoutine();}
-	  });
+		  tmp["*Get Dressed*"] = function(m){player(m);$.temp.dressed = true;MorningRoutine();};
 	}
+	if($.loop > 2){
+	    tmp["*Stay Home*"] = function(m){player(m);StayHome();};
+	}
+	Choose(tmp);
 }
 function LeaveHome(){
   Show("background","building");
