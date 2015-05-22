@@ -45,23 +45,31 @@ function LeaveHome(){
   Show("background","building");
   PlaySound("city","city",{loop:-1});
 	narrator("You walk out the front door");
-  if($.loop <= 2){
+  if(!$.temp.late){
     PlaySound("splash","splash",{loop:0, volume:.7});
   	narrator("*SPLASH*");
-  	narrator("A car driving by hit a puddle and drenched you in disgusting water");
-  	$.temp.drenched  = true;
-  	if($.loop == 2){
-  	  thought("Wait");
-  	  thought("...");
-  	  thought("What are the odds this would happen twice in a row?");
+  	if($.loop > 2){
+  	  player("*Duck*");
+  	}else{
+    	narrator("A car driving by hit a puddle and drenched you in disgusting water");
+    	$.temp.late  = true;
+    	if($.loop == 2){
+    	  thought("Wait");
+    	  thought("...");
+    	  thought("What are the odds this would happen twice in a row?");
+    	}
+    	Choose({
+  		  "*Go back home and change clothes*": function(m){player(m);narrator('After changing clothes, you begin your day as usual.');EndMorning()}
+  	  });
+	    return;
   	}
-  	Choose({
-		  "*Go back home and change clothes*": function(m){player(m);narrator('After changing clothes, you begin your day as usual.');EndMorning()}
-	  });
-	  return;
-	}else{
-	  EndMorning();
 	}
+	
+	narrator("Where do you go now?");
+	Choose({
+  		  "Work": function(m){player(m);EndMorning();},
+  		  "The pub acrossed the street":Pub,
+  	  });
 	
 }
 function EndMorning(){

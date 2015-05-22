@@ -1,13 +1,15 @@
 function StartWork(){
   Show("background","work"); //work art
   PlaySound("office","office",{loop:-1,volume:.5});
-  if($.temp.drenched){
+  if($.temp.late){
     narrator("You arrive at work late on account of your accident earlier.");
     narrator("You try to get to your cubicle quickly to make up the lost time.");
     boss("Where were you?");
-    if($.loop == 2){
-      thought("I can't give him the same excuse I gave yesterday.");
-      thought("What can I say?");
+    if($.loop >= 2){
+      if($.loop === 2){
+        thought("I can't give him the same excuse I gave yesterday.");
+        thought("What can I say?");
+      }
       Choose({
     		"As I left my house, a car splashed water on me. So I needed to ...": BossAngry,
     		"Bus was full": BossAngry,
@@ -26,7 +28,6 @@ function StartWork(){
 }
 //pandybat scene
 function BossAngry(m){
-  //boss appears (maybe)
   player(m);
   boss("You think I can't tell a lie when I hear one");
   boss("Get to your cubicle.");
@@ -39,9 +40,10 @@ function InCubicle(){
   if($.loop <= 2){
     DoWork();
   }else{
-    //talk to other people
-    thought("I love no consequences");
-    EndWork();
+    thought("I don't have to do this work. What should I do?");
+    Choose({
+      "Work":DoWork,
+    });
   }
 }
 function DoWork(){
@@ -83,5 +85,14 @@ function DoWork3(m){
 }
 function EndWork(){
   Clear();
+  if($.loop > 2){
+    Show("background","building");
+    player("Where should I go?");
+    Choose({
+      "Back home":function(){narrator("You go home");Clear();Home();},
+      "To the pub":Pub
+    });
+    return;
+  }
 	Home();
 }
