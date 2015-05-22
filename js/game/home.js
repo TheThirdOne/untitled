@@ -63,6 +63,7 @@ function EndHome(){
 }
 
 function StayHome(){
+  $.temp.late = true;
   Show("background","home");
   PlaySound("room","room",{loop:-1});
   dad("*Opens Door*");

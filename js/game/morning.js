@@ -46,7 +46,7 @@ function LeaveHome(){
   PlaySound("city","city",{loop:-1});
 	narrator("You walk out the front door");
   if(!$.temp.late){
-    PlaySound("splash","splash",{loop:0, volume:.7});
+    PlaySound("splash","splash",{loop:0});
   	narrator("*SPLASH*");
   	if($.loop > 2){
   	  player("*Duck*");
